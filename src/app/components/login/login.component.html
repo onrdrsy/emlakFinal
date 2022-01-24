@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+     
+      <div class="card">
+        <div class="card-header"> <h4>Kullanıcı Girişi</h4></div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Mail Adresi</label>
+            <input type="text" name="mail" class="form-control" #mail>
+          </div>
+          <div class="form-group">
+            <label>Parola</label>
+            <input type="password" name="parola" class="form-control" #parola>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary btn-block" (click)="GirisYap(mail.value,parola.value)">Giriş Yap</button>
+          <p class="mt-3 text-center">Üye değil misin? <button class="btn btn-link btn-block" [routerLink]="['/sign-up']">Kayıt Ol</button></p>
+          
+        
+        </div>
+      </div>
+      <div [ngClass]="sonuc.islem ? 'alert alert-success': 'alert alert-danger'" *ngIf="sonuc.mesaj?.length>0">{{sonuc.mesaj}}</div>
+    </div>
+  </div>
+</div>

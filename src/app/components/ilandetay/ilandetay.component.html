@@ -1,0 +1,80 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-outline-primary" [routerLink]="['/ilanlar']">İlanları Gör</button>
+    </div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-9"><p class="h6">{{secKayit.ilanBaslik}}</p></div>
+              <div class="col-md-3 text-right text-danger bg-light"><p class="h4">{{secKayit.fiyat | currency: "₺"}}</p></div>
+            </div>
+            
+          </div>
+          <div class=" row card-body">
+            <div class="row">
+              <div class="col-md-5">
+                <ul class="list-group list-group-flush">
+                
+                  <li class="list-group-item">
+                    <span>Şehir</span>
+                        &nbsp;
+                    <strong>{{secKayit.ilanAdres}}</strong>
+                  </li>
+                  <li class="list-group-item">
+                    <span>İlan Tarihi</span>
+                        &nbsp;
+                    <strong>{{secKayit.ilanTarihi}}</strong>
+                  </li>
+                  <li class="list-group-item">
+                    <span>İlan Durumu</span>
+                        &nbsp;
+                    <strong>{{secKayit.ilanDurum}}</strong>
+                  </li>
+                  <li class="list-group-item">
+                    <span>Oda Sayısı</span>
+                        &nbsp;
+                    <strong>{{secKayit.odaSayisi}}</strong>
+                  </li>
+                  <li class="list-group-item">
+                    <span>M<sup>2</sup></span>
+                        &nbsp;
+                    <strong>{{secKayit.m2}} M<sup>2</sup></strong>
+                  </li>
+                  <li class="list-group-item">
+                    <span>Bulunduğu Kat</span>
+                        &nbsp;
+                    <strong>{{secKayit.kat}}</strong>
+                  </li>
+                  
+                </ul>
+              </div>
+            <div class="col-md-7"><img src="{{secKayit?.fotoURL}}" alt="" class="img-fluid rounded" style="min-width: 300;"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 ml-2">
+              <p class="h6">İlan Açıklaması</p>
+              <p>{{secKayit.aciklama}}</p>
+            </div>
+          </div>
+              
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="h5">{{secKayit.uid}}</p>
+              </div>
+              <div class="col-md-6"><p class="h6 text-info">İletişim</p></div>
+            </div>
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-outline-primary" [routerLink]="['/ilanlar']">İlanları Gör</button>
+    </div>
+  </div>
+  
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <form #frm="ngForm" (ngSubmit)="Kaydet()">
+        <div class="card">
+          <div class="card-header">
+           <h4> İlan Ekle</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-group col-md-12">
+              <label>İlan Başlığı</label>
+              <input type="text" name="baslik" class="form-control" [(ngModel)]="secKayit.ilanBaslik" required>
+            </div>
+            <div class="form-group col-md-12">
+              <label>Bir Fotoğraf seçiniz</label><br>
+              <input type="file" (change)="DosyaSec($event)">
+              
+            </div>
+            <div class="form-group col-md-12">
+              <label>Açıklama *</label>
+              <textarea name="aciklama" rows="10" class="form-control" [(ngModel)]="secKayit.aciklama" required></textarea>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label>Fiyat</label>
+              <input type="text" name="fiyat" class="form-control " [(ngModel)]="secKayit.fiyat" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="OdaSayisiDropdown">Example multiple select</label>
+              <select class="form-control"  id="OdaSayisiDropdown" value="{{secKayit.odaSayisi}}" #odaSayisi>
+                <option value="{{secKayit.odaSayisi}}">1+1</option>
+                <option>2+1</option>
+                <option>3+1</option>
+                <option>4+1</option>
+                <option>5+2</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-footer">
+            <input type="submit" value="Kaydet" class="btn btn-primary" [disabled]="frm.invalid">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

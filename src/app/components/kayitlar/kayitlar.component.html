@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2">
+      <h4>Filteler</h4>
+      <hr>
+      <form #frm="ngForm" (submit)="Kaydet()">
+      <div class="form-group">
+        <label>Başlık</label>
+        <input type="text" class="form-control" name="baslik" [(ngModel)]="secKayit.ilanBaslik" required>
+      
+        <label>Fiyat</label>
+        <input type="text" class="form-control" name="fiyat" [(ngModel)]="secKayit.fiyat" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Kaydet" class="form-control" class="btn btn-outline-success" [disabled]="frm.invalid">
+      </div></form>
+    </div>
+    <div class="col-md-10">
+      <h4>İlanlar</h4>
+      <table class="table table-hover table-striped ">
+        <thead>
+          <!-- <th >Id</th> -->
+          <th >Fotoğraf</th>
+          <th >Başlık</th>
+          <th >Fiyat</th>
+          <th >İlan Tarihi</th>
+          <th >Detay</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let kayit of kayitlar">
+            <td><img src="{{kayit.fotoURL}}" alt="" class="img-fluid" style="max-width: 100px"></td>
+            <!-- <td>{{kayit.uid}}</td> -->
+            <td class="">{{kayit.ilanBaslik}}</td>
+            <td>{{kayit.fiyat | currency: '₺'}}</td>
+            <td>{{kayit.ilanTarihi | date:"dd:MM:yyyy"}}</td>
+            <td><button class="btn btn-primary btn-sm" [routerLink]="['/ilanlar/detay', kayit.key]">Detay</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+    </div>
+  </div>
+</div>
