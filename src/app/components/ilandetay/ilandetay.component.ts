@@ -24,7 +24,6 @@ export class IlandetayComponent implements OnInit {
     if (localStorage.getItem("user")){
       var user = JSON.parse(localStorage.getItem("user"));
       this.uid = user.uid;
-
     }
     this.route.params.subscribe(p => {
       this.key = p.key;

@@ -1,4 +1,4 @@
-import { Dosya } from './../../models/dosya';
+
 
 import { Kayit } from './../../models/kayit';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class IlanekleComponent implements OnInit {
   secKayit:Kayit = new Kayit();
-  dosyalar: Dosya[];
+  
   files: FileList;
 
   durumlar = [
@@ -69,7 +69,7 @@ export class IlanekleComponent implements OnInit {
     this.files= e.target.files;
   }
   DosyaYukle(){
-    var dosya = new Dosya();
+    
     
     this.fbservis.DosyaYukleStorage(this.secKayit).subscribe( p => {
       console.log("Yüklendi");

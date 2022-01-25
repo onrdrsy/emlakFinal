@@ -23,7 +23,10 @@ export class KayitlarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+    if (localStorage.getItem("user")){
+      var user = JSON.parse(localStorage.getItem("user"));
+      this.uid = user.uid;
+    }
     this.secKayit.key = null;
     this.UyeListele();
     this.ilanListele();
