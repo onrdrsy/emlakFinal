@@ -1,3 +1,10 @@
+# Bu proje İnternet Programcılığı Dönem projesi olarak hazırlanmıştır.
+
+### İlanlar
+![This is an image](https://honor.s-ul.eu/RgTeup95.png)
+### ilan ekleme
+![This is an image](https://honor.s-ul.eu/5CNeV1k8.png)
+
 # EmlakFinal
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.15.
