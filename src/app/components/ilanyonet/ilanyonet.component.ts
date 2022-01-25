@@ -35,11 +35,6 @@ export class IlanyonetComponent implements OnInit {
       });
     });
   }
-  Duzenle(){
-
-  }
-  Sil(){
-    
-  }
+  
 
 }

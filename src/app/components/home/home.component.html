@@ -1,11 +1,36 @@
-<div class="container mt-5">
+<!-- <div id="body" [ngStyle]="{backgroundImage:'url(./../../assets/bg.jpg)'}"> -->
+  
+    <style>
+    body {
+      background-image: url('src\assets\bg.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+    </style>
+    <body>
+<div class="container mt-5"  >
+
   <div class="row">
-    <div class="col-md-4">
-      <button class="btn btn-outline-primary" [routerLink]="['/ilanlar']">Kayıtlar</button>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">EV Mİ ARIYORSUN?</h5>
+          <p class="card-text"> Yüzlerce Satılık ve Kiralık ev ilanına göz at</p>
+          <a [routerLink]="['/ilanlar']" class="btn btn-primary">İlanları İncele</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4">
-     
-     
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">İLANIN LİSTELENSİN Mİ İSTİYORSUN?</h5>
+          <p class="card-text">Hemen şimdi ücretsiz olarak ilanını yayınlayabilirsin.</p>
+          <a [routerLink]="['/ilan-ver']" class="btn btn-primary">Ücretsiz İlan Ver</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<!-- </div> -->
+</body>

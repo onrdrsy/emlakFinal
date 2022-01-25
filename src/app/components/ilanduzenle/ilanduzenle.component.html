@@ -10,12 +10,12 @@
       <form #frm="ngForm" (ngSubmit)="Kaydet()">
         <div class="card">
           <div class="card-header">
-           <h4> İlan Ekle</h4>
+           <h4> İlan Düzenle</h4>
           </div>
           <div class="card-body">
             <div class="form-group col-md-12">
               <label>İlan Başlığı</label>
-              <input type="text" name="baslik" class="form-control" [(ngModel)]="secKayit.ilanBaslik" required #baslik="ngModel" [ngClass]="{'is-invalid': baslik.invalid && baslik.dirty}">
+              <input type="text" name="ilanBaslik" class="form-control" [(ngModel)]="secKayit.ilanBaslik" required #ilanBaslik="ngModel" [ngClass]="{'is-invalid': ilanBaslik.invalid && ilanBaslik.dirty}">
             </div>
 
             <div class="form-group col-md-12">
@@ -59,17 +59,21 @@
                 <option *ngFor="let i of iller" [value]="i"> {{i}} </option>
               </select>
             </div>
-            <div class="form-group col-md-12">
+            <!-- <div class="form-group col-md-12">
               <label>Bir Fotoğraf seçiniz</label><br>
               <input type="file" (change)="DosyaSec($event)">
               
-            </div>
+            </div> -->
           </div>
           <div class="card-footer">
-            <input type="submit" value="Kaydet" class="btn btn-primary" [disabled]="frm.invalid">
+            <input type="submit" value="Kaydet" class="btn btn-success" [disabled]="frm.invalid">
+          
           </div>
         </div>
       </form>
+      <div class="card-footer mb-5"><button class="btn btn-primary ml-2" [routerLink]="['/yonet']">İptal</button>
+      <button class="btn btn-link text-danger pull-right" (click)="Sil()">İlanı Sil</button></div>
+      
     </div>
   </div>
 </div>

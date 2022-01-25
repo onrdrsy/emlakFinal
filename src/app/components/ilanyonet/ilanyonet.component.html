@@ -1,32 +1,32 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-3">
-      filre
-    </div>
-    <div class="col-md-9">
-      <h4>İlanlar</h4>
-      <table class="table">
+    <div class="col-md-12">
+      <h4>İlanlarım</h4>
+      <table class="table table-hover table-striped ">
         <thead>
-          
+          <!-- <th >Id</th> -->
           <th >Fotoğraf</th>
           <th >Başlık</th>
           <th >Fiyat</th>
           <th >İlan Tarihi</th>
+          <th >Şehir</th>
           <th >Detay</th>
         </thead>
         <tbody>
           <tr *ngFor="let kayit of kayitlar">
-            
-            <td><h3>IMAGE</h3></td>
-            <td>{{kayit.ilanBaslik}}</td>
+            <td><img src="{{kayit.fotoURL}}" alt="" class="img-fluid" style="max-width: 100px"></td>
+            <!-- <td>{{kayit.uid}}</td> -->
+            <td class=""> <a [routerLink]="['/ilanlar/detay', kayit.key]">{{kayit.ilanBaslik}}</a></td>
             <td>{{kayit.fiyat | currency: '₺'}}</td>
             <td>{{kayit.ilanTarihi | date:"dd:MM:yyyy"}}</td>
-            <td><button class="btn btn-warning btn-sm" (click)="Duzenle()">Düzenle</button></td>
-            <td><button class="btn btn-danger btn-sm" (click)="Sil()">Sil</button></td>
+            <td>{{kayit.ilanAdres}}</td>
+            <td><button class="btn btn-info btn-sm" [routerLink]="['/ilanlar/detay', kayit.key]">Detay</button></td>
+            <td><button class="btn btn-warning btn-sm" [routerLink]="['/ilanlar/duzenle', kayit.key]">Yönet</button></td>
             
           </tr>
         </tbody>
       </table>
+      <hr>
     </div>
   </div>
 </div>

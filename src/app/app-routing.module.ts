@@ -1,3 +1,4 @@
+import { IlanduzenleComponent } from './components/ilanduzenle/ilanduzenle.component';
 import { IlandetayComponent } from './components/ilandetay/ilandetay.component';
 import { IlanekleComponent } from './components/ilanekle/ilanekle.component';
 import { IlanyonetComponent } from './components/ilanyonet/ilanyonet.component';
@@ -15,14 +16,21 @@ const routes: Routes = [
   {path: 'ilanlar', component: KayitlarComponent},
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignupComponent},
-  {path: 'ilan-ver', component: IlanekleComponent},
+ 
+  {path: 'ilanlar/detay/:key', component: IlandetayComponent},
 // üye////
   {path: 'yonet', component: IlanyonetComponent, canActivate:[AngularFireAuthGuard], data:{
     authGuardPipe:redirectLogin
   }},
-  {path: 'ilanlar/detay/:key', component: IlandetayComponent}
-];
 
+  {path: 'ilan-ver', component: IlanekleComponent, canActivate:[AngularFireAuthGuard], data:{
+    authGuardPipe:redirectLogin
+  }},
+  
+  {path: 'ilanlar/duzenle/:key', component: IlanduzenleComponent, canActivate:[AngularFireAuthGuard], data:{
+    authGuardPipe:redirectLogin
+  }}
+]; 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -1,6 +1,8 @@
 export class Kayit {
     key: string;
     uid: string;
+    uyeAd: string;
+    uyeMail:string;
     
     ilanBaslik: string;
     fiyat: number;

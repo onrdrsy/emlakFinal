@@ -51,6 +51,10 @@ export class FbServisService {
   UyeEkle(uye: Uye){
     return this.uyeRef.push(uye);
   }
+
+  UyeListele(){
+    return this.uyeRef;
+  }
  ///// SIGN UP ////
   
 

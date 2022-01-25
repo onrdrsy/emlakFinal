@@ -1,20 +1,19 @@
-import { Dosya } from './../../models/dosya';
-
-import { Kayit } from './../../models/kayit';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Kayit } from 'src/app/models/kayit';
 import { FbServisService } from 'src/app/services/fbServis.service';
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'app-ilanekle',
-  templateUrl: './ilanekle.component.html',
-  styleUrls: ['./ilanekle.component.scss']
+  selector: 'app-ilanduzenle',
+  templateUrl: './ilanduzenle.component.html',
+  styleUrls: ['./ilanduzenle.component.scss']
 })
-export class IlanekleComponent implements OnInit {
-  secKayit:Kayit = new Kayit();
-  dosyalar: Dosya[];
+export class IlanduzenleComponent implements OnInit {
+  
   files: FileList;
+  key: string;
+  secKayit: Kayit;
+  uid: string;
 
   durumlar = [
     'Satılık', 'Kiralık', 'Günlük Kiralık'
@@ -37,45 +36,47 @@ export class IlanekleComponent implements OnInit {
 'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'
   ]
 
+ 
   constructor(
-    public fbservis:FbServisService,
-    public router:Router,
+    public route: ActivatedRoute,
+    public fbServis: FbServisService,
+    public router: Router
+    
   ) { }
 
   ngOnInit() {
-  }
-  Kaydet(){
     var user = JSON.parse(localStorage.getItem("user"));
-    this.secKayit.uid = user.uid;
-    this.secKayit.uyeAd = user.displayName;
-    this.secKayit.uyeMail = user.email;
-    var tarih = new Date();
-    this.secKayit.ilanTarihi = tarih.getTime().toString();
-    this.secKayit.duzTarihi = tarih.getTime().toString();
-    this.secKayit.file = this.files[0];
-    this.fbservis.DosyaYukleStorage(this.secKayit).subscribe( p => {
-      this.router.navigate(['/ilanlar']);
-      console.log(this.secKayit)
-      console.log("Yüklendi");
-    }, err => {
-      console.log("Hata");
-    });/*
-    this.fbservis.ilanEkle(this.secKayit).then(d => {
-      
-    }); */
+    this.uid = user.uid;
+    this.route.params.subscribe(p => {
+      this.key = p.key;
+      this.ilangetir();
+    })
+  }
 
-  }
-  DosyaSec(e){
-    this.files= e.target.files;
-  }
-  DosyaYukle(){
-    var dosya = new Dosya();
-    
-    this.fbservis.DosyaYukleStorage(this.secKayit).subscribe( p => {
-      console.log("Yüklendi");
-    }, err => {
-      console.log("Hata");
+  ilangetir(){
+    this.fbServis.ilanByKey(this.key).snapshotChanges().subscribe(data => {
+        const y = { ...data.payload.toJSON(), key: this.key};
+      this.secKayit = (y as Kayit);
+      if (this.uid != this.secKayit.uid){
+        this.router.navigate(['/yonet']);
+      }
+      //console.log(this.secKayit);
     });
   }
 
+  Kaydet(){
+    var tarih= new Date();
+    this.secKayit.duzTarihi = tarih.getTime().toString();
+    this.fbServis.ilanDuzenle(this.secKayit).then(d => {
+      this.router.navigate(['/ilanlar/detay', this.key])
+    });
+  };
+  DosyaSec(e){
+    this.files= e.target.files;
+  }
+  Sil() {
+    this.fbServis.ilanSil(this.key).then(d => {
+      this.router.navigate(['/yonet']);
+    });
+  }
 }

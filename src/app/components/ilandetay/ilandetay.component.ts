@@ -12,6 +12,7 @@ export class IlandetayComponent implements OnInit {
   
   key: string;
   secKayit: Kayit;
+  uid: string;
   constructor(
     public route: ActivatedRoute,
     public fbServis: FbServisService,
@@ -20,6 +21,11 @@ export class IlandetayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (localStorage.getItem("user")){
+      var user = JSON.parse(localStorage.getItem("user"));
+      this.uid = user.uid;
+
+    }
     this.route.params.subscribe(p => {
       this.key = p.key;
       this.ilangetir();

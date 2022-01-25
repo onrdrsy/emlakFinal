@@ -1,3 +1,4 @@
+import { IlanduzenleComponent } from './components/ilanduzenle/ilanduzenle.component';
 import { IlandetayComponent } from './components/ilandetay/ilandetay.component';
 import { IlanekleComponent } from './components/ilanekle/ilanekle.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -14,7 +15,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
@@ -28,6 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     LoginComponent,
     SignupComponent,
     IlanekleComponent,
+    IlanduzenleComponent,
     IlandetayComponent,
     IlanyonetComponent
   ],
@@ -35,6 +37,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule
